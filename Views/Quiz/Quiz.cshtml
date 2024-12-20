@@ -1,0 +1,26 @@
+﻿@model QuizModel
+
+@{
+    ViewData["Title"] = "Hello Quiz";
+}
+
+<h1>Quiz</h1>
+<p><b>@Model.Question=</b></p>
+
+<form method="post" asp-action="Quiz">
+    <input type="hidden" name="questionNumber" value="@Model.QuestionNumber" />
+    <input type="number" name="userAnswer" required />
+    <br /><br />
+    <button type="submit" name="action" value="Next">Next</button>
+    <button type="submit" name="action" value="Finish">Finish</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="error">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}

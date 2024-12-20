@@ -1,0 +1,25 @@
+﻿@model QuizResults
+
+@{
+    ViewData["Title"] = "Hello Quiz";
+}
+
+<h1>Quiz results</h1>
+
+<table>
+    <thead>
+        <tr>
+            Right answers @Model.CorrectAnswers out @Model.Questions.Count
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var question in Model.Questions)
+        {
+            <tr>
+                <td>@question.QuestionNumber. </td> 
+                <td>@question.Question  = </td>
+                <td>@question.UserAnswer</td>
+            </tr>
+        }
+    </tbody>
+</table>
